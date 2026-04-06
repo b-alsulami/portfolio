@@ -3,508 +3,166 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bandar Ahmed Alsulami — Senior HR Professional</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Bandar Ahmed Alsulami</title>
+ 
 <script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        navy: { 50: '#f0f3f9', 100: '#d9e0ef', 900: '#0B1426', 950: '#060D1A' },
-        slate: { 350: '#9BA4B5' },
-        accent: { DEFAULT: '#C8A951', light: '#E2CC7E', dark: '#9E832E', muted: 'rgba(200,169,81,0.12)' }
-      },
-      fontFamily: {
-        display: ['"DM Serif Display"', 'Georgia', 'serif'],
-        body: ['"Outfit"', 'system-ui', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'monospace']
-      }
-    }
-  }
-}
-</script>
+ 
 <style>
-  /* ─── Base ─── */
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Outfit', sans-serif; background: #060D1A; color: #E8E8E8; overflow-x: hidden; }
-  ::selection { background: rgba(200,169,81,0.35); color: #fff; }
 
-  /* ─── Noise texture overlay ─── */
-  .noise::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    pointer-events: none;
-    opacity: 0.025;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-repeat: repeat;
-    background-size: 180px;
-  }
+body {
 
-  /* ─── Staggered reveal animations ─── */
-  @keyframes fadeSlideUp {
-    from { opacity: 0; transform: translateY(32px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  @keyframes lineGrow {
-    from { transform: scaleX(0); }
-    to { transform: scaleX(1); }
-  }
-  @keyframes shimmer {
-    0% { background-position: -200% center; }
-    100% { background-position: 200% center; }
-  }
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-6px); }
-  }
+  background: #060A14;
 
-  .reveal { opacity: 0; animation: fadeSlideUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
-  .reveal-d1 { animation-delay: 0.1s; }
-  .reveal-d2 { animation-delay: 0.22s; }
-  .reveal-d3 { animation-delay: 0.34s; }
-  .reveal-d4 { animation-delay: 0.46s; }
-  .reveal-d5 { animation-delay: 0.58s; }
-  .reveal-d6 { animation-delay: 0.70s; }
-  .reveal-d7 { animation-delay: 0.82s; }
-  .reveal-d8 { animation-delay: 0.94s; }
+  color: #E2E8F0;
 
-  .line-reveal {
-    transform-origin: left;
-    animation: lineGrow 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    animation-delay: 0.5s;
-    transform: scaleX(0);
-  }
+}
+ 
+/* FIXED REVEAL SYSTEM */
 
-  /* ─── Gold shimmer text ─── */
-  .shimmer-text {
-    background: linear-gradient(110deg, #C8A951 0%, #F5E6A3 25%, #C8A951 50%, #F5E6A3 75%, #C8A951 100%);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: shimmer 4s linear infinite;
-  }
+.reveal {
 
-  /* ─── Glow orbs ─── */
-  .orb-1 {
-    position: absolute;
-    width: 280px;
-    height: 280px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(200,169,81,0.07) 0%, transparent 70%);
-    top: -80px;
-    right: -60px;
-    pointer-events: none;
-    animation: float 8s ease-in-out infinite;
-  }
-  .orb-2 {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(100,140,200,0.05) 0%, transparent 70%);
-    bottom: -40px;
-    left: -40px;
-    pointer-events: none;
-    animation: float 10s ease-in-out infinite reverse;
-  }
+  opacity: 0;
 
-  /* ─── Section styling ─── */
-  .section-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 3.5px;
-    text-transform: uppercase;
-    color: #C8A951;
-    position: relative;
-    padding-left: 28px;
-  }
-  .section-label::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    width: 18px;
-    height: 1px;
-    background: #C8A951;
-  }
+  transform: translateY(30px);
 
-  /* ─── Competency cards ─── */
-  .comp-card {
-    background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
-    border: 1px solid rgba(255,255,255,0.06);
-    backdrop-filter: blur(8px);
-    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-    position: relative;
-    overflow: hidden;
-  }
-  .comp-card::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: linear-gradient(135deg, rgba(200,169,81,0.08), transparent 60%);
-    opacity: 0;
-    transition: opacity 0.4s;
-  }
-  .comp-card:hover {
-    border-color: rgba(200,169,81,0.2);
-    transform: translateY(-3px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
-  }
-  .comp-card:hover::after { opacity: 1; }
+  transition: all 0.7s ease;
 
-  .comp-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(200,169,81,0.08);
-    border: 1px solid rgba(200,169,81,0.15);
-    flex-shrink: 0;
-    transition: all 0.4s;
-  }
-  .comp-card:hover .comp-icon {
-    background: rgba(200,169,81,0.14);
-    border-color: rgba(200,169,81,0.3);
-  }
-  .comp-icon svg {
-    width: 20px;
-    height: 20px;
-    stroke: #C8A951;
-    fill: none;
-    stroke-width: 1.8;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
+}
+ 
+.reveal.visible {
 
-  /* ─── Timeline ─── */
-  .timeline-item {
-    position: relative;
-    padding-left: 32px;
-  }
-  .timeline-item::before {
-    content: '';
-    position: absolute;
-    left: 7px;
-    top: 28px;
-    bottom: -16px;
-    width: 1px;
-    background: linear-gradient(180deg, rgba(200,169,81,0.3), transparent);
-  }
-  .timeline-item:last-child::before { display: none; }
-  .timeline-dot {
-    position: absolute;
-    left: 0;
-    top: 6px;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    border: 2px solid #C8A951;
-    background: #0B1426;
-    z-index: 2;
-  }
-  .timeline-dot::after {
-    content: '';
-    position: absolute;
-    inset: 3px;
-    border-radius: 50%;
-    background: #C8A951;
-  }
+  opacity: 1;
 
-  /* ─── CTA Buttons ─── */
-  .btn-primary {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    padding: 16px 24px;
-    border-radius: 14px;
-    font-weight: 600;
-    font-size: 14px;
-    letter-spacing: 0.5px;
-    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-    text-decoration: none;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-  }
-  .btn-gold {
-    background: linear-gradient(135deg, #C8A951, #A07D2E);
-    color: #0B1426;
-    box-shadow: 0 4px 20px rgba(200,169,81,0.25), inset 0 1px 0 rgba(255,255,255,0.15);
-  }
-  .btn-gold:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(200,169,81,0.35), inset 0 1px 0 rgba(255,255,255,0.2);
-  }
-  .btn-outline {
-    background: transparent;
-    color: #D4D4D4;
-    border: 1px solid rgba(255,255,255,0.12);
-  }
-  .btn-outline:hover {
-    border-color: rgba(200,169,81,0.3);
-    color: #C8A951;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-  }
-  .btn-primary svg {
-    width: 18px;
-    height: 18px;
-    flex-shrink: 0;
-  }
+  transform: translateY(0);
 
-  /* ─── Scroll-triggered reveals ─── */
-  .scroll-reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  .scroll-reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+}
+ 
+/* FALLBACK (CRITICAL FIX) */
 
-  /* ─── Decorative corner marks ─── */
-  .corner-mark {
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    border-color: rgba(200,169,81,0.15);
-    pointer-events: none;
-  }
-  .corner-tl { top: 0; left: 0; border-top: 1px solid; border-left: 1px solid; border-color: inherit; }
-  .corner-br { bottom: 0; right: 0; border-bottom: 1px solid; border-right: 1px solid; border-color: inherit; }
+.no-js .reveal {
+
+  opacity: 1 !important;
+
+  transform: none !important;
+
+}
+ 
+/* Buttons */
+
+.btn-primary {
+
+  background: #C9A84C;
+
+  color: #000;
+
+  padding: 12px 20px;
+
+  border-radius: 10px;
+
+}
 </style>
 </head>
-
-<body class="noise">
-
-<!-- ═══════════════════════════════════════════ -->
-<!--                HERO SECTION                -->
-<!-- ═══════════════════════════════════════════ -->
-<section class="relative min-h-[92vh] flex flex-col items-center justify-center px-6 pt-16 pb-12">
-  <div class="orb-1"></div>
-  <div class="orb-2"></div>
-
-  <!-- Monogram badge -->
-  <div class="reveal reveal-d1 mb-8">
-    <div class="w-[72px] h-[72px] rounded-2xl border border-[rgba(200,169,81,0.25)] bg-[rgba(200,169,81,0.06)] flex items-center justify-center backdrop-blur-sm">
-      <span class="font-display text-2xl shimmer-text tracking-wide">BA</span>
-    </div>
-  </div>
-
-  <!-- Name -->
-  <h1 class="reveal reveal-d2 font-display text-[clamp(2rem,8vw,3.2rem)] text-white text-center leading-[1.15] tracking-tight">
-    Bandar Ahmed Alsulami
-  </h1>
-
-  <!-- Gold divider -->
-  <div class="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#C8A951] to-transparent my-5 line-reveal"></div>
-
-  <!-- Title -->
-  <p class="reveal reveal-d3 font-body text-[clamp(0.85rem,3.2vw,1.05rem)] text-[#9BA4B5] text-center max-w-xs leading-relaxed font-light">
-    Senior Payroll, Compensation<br>&amp; Benefits Officer
-  </p>
-
-  <!-- Credentials pill -->
-  <div class="reveal reveal-d4 mt-6 flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-[rgba(200,169,81,0.18)] bg-[rgba(200,169,81,0.05)]">
-    <svg class="w-3.5 h-3.5 text-[#C8A951]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
-    <span class="font-mono text-[10px] tracking-[2.5px] text-[#C8A951] uppercase">CIPD Certified</span>
-    <span class="w-[3px] h-[3px] rounded-full bg-[rgba(200,169,81,0.4)]"></span>
-    <span class="font-mono text-[10px] tracking-[2px] text-[#7A8294] uppercase">BBA, HRM</span>
-  </div>
-
-  <!-- Scroll indicator -->
-  <div class="reveal reveal-d6 absolute bottom-8 flex flex-col items-center gap-2 opacity-40">
-    <span class="font-mono text-[9px] tracking-[3px] text-[#6B7280] uppercase">Scroll</span>
-    <div class="w-[1px] h-8 bg-gradient-to-b from-[#C8A951] to-transparent animate-pulse"></div>
-  </div>
+ 
+<body class="no-js">
+ 
+<!-- HERO -->
+<section class="min-h-screen flex flex-col justify-center items-center text-center px-6">
+<h1 class="text-4xl text-white mb-4">Bandar Ahmed Alsulami</h1>
+<p class="text-gray-400">Senior HR Professional</p>
 </section>
+ 
+<!-- ABOUT -->
+<section class="px-6 py-20 max-w-lg mx-auto reveal">
+<h2 class="text-2xl text-white mb-4">About</h2>
+<p class="text-gray-400">
 
-
-<!-- ═══════════════════════════════════════════ -->
-<!--              ABOUT ME SECTION              -->
-<!-- ═══════════════════════════════════════════ -->
-<section class="relative px-6 py-16 max-w-lg mx-auto">
-  <div class="scroll-reveal">
-    <span class="section-label mb-6 block">About Me</span>
-    <div class="relative mt-5 p-6 rounded-2xl bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.05)]">
-      <div class="corner-mark corner-tl" style="border-color: rgba(200,169,81,0.2);"></div>
-      <div class="corner-mark corner-br" style="border-color: rgba(200,169,81,0.2);"></div>
-      <p class="font-body text-[14.5px] leading-[1.85] text-[#B0B8C8] font-light">
-        I am a CIPD-certified HR professional with proven expertise in managing end-to-end payroll processing for
-        <span class="text-white font-medium">1,200+ employees</span>, driving ERP/HRIS system integrations
-        (<span class="text-[#C8A951] font-normal">SAP SuccessFactors</span>,
-        <span class="text-[#C8A951] font-normal">MenaITech</span>), and maintaining strict compliance with the
-        Wage Protection System (<span class="text-white font-normal">Mudad/WPS</span>) and
-        <span class="text-white font-normal">GOSI</span>. I leverage data-driven decision-making using
-        <span class="text-[#C8A951] font-normal">Power BI</span> and
-        <span class="text-[#C8A951] font-normal">Advanced Excel</span>.
-      </p>
-    </div>
-  </div>
+    Payroll & HR specialist with ERP experience and WPS compliance.
+</p>
 </section>
-
-
-<!-- ═══════════════════════════════════════════ -->
-<!--          CORE COMPETENCIES SECTION         -->
-<!-- ═══════════════════════════════════════════ -->
-<section class="relative px-6 py-12 max-w-lg mx-auto">
-  <div class="scroll-reveal">
-    <span class="section-label mb-8 block">Core Competencies</span>
-  </div>
-
-  <div class="grid grid-cols-1 gap-4 mt-2">
-    <!-- Card 1: Payroll Operations -->
-    <div class="scroll-reveal comp-card rounded-2xl p-5 flex items-start gap-4" style="transition-delay: 0.05s">
-      <div class="comp-icon">
-        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="3"/><path d="M2 9h20"/><path d="M9 3v6"/><circle cx="15" cy="15" r="2.5"/><path d="M17.2 17.2L19 19"/></svg>
-      </div>
-      <div>
-        <h3 class="font-body text-[13.5px] font-semibold text-white leading-tight">Payroll Operations &amp; ERP Integration</h3>
-        <p class="font-body text-[11.5px] text-[#7A8294] mt-1 leading-relaxed">End-to-end payroll cycles, SAP SuccessFactors, MenaITech, financial postings &amp; reconciliation</p>
-      </div>
-    </div>
-
-    <!-- Card 2: Compensation -->
-    <div class="scroll-reveal comp-card rounded-2xl p-5 flex items-start gap-4" style="transition-delay: 0.12s">
-      <div class="comp-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-      </div>
-      <div>
-        <h3 class="font-body text-[13.5px] font-semibold text-white leading-tight">Compensation, Benefits &amp; Total Rewards</h3>
-        <p class="font-body text-[11.5px] text-[#7A8294] mt-1 leading-relaxed">Salary benchmarking, bonus calculations, benefits administration &amp; insurance programs</p>
-      </div>
-    </div>
-
-    <!-- Card 3: Job Evaluation -->
-    <div class="scroll-reveal comp-card rounded-2xl p-5 flex items-start gap-4" style="transition-delay: 0.19s">
-      <div class="comp-icon">
-        <svg viewBox="0 0 24 24"><path d="M16 18l2-2 4 4"/><path d="M21 15V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h10"/><path d="M7 7h6M7 11h10M7 15h4"/></svg>
-      </div>
-      <div>
-        <h3 class="font-body text-[13.5px] font-semibold text-white leading-tight">Job Evaluation (Korn Ferry Hay Method)</h3>
-        <p class="font-body text-[11.5px] text-[#7A8294] mt-1 leading-relaxed">Grading criteria, position benchmarking &amp; internal equity analysis across grade structures</p>
-      </div>
-    </div>
-
-    <!-- Card 4: HR Analytics -->
-    <div class="scroll-reveal comp-card rounded-2xl p-5 flex items-start gap-4" style="transition-delay: 0.26s">
-      <div class="comp-icon">
-        <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 17V13"/><path d="M11 17V9"/><path d="M15 17V5"/><path d="M19 17v-6"/></svg>
-      </div>
-      <div>
-        <h3 class="font-body text-[13.5px] font-semibold text-white leading-tight">HR Analytics &amp; Reporting</h3>
-        <p class="font-body text-[11.5px] text-[#7A8294] mt-1 leading-relaxed">Power BI dashboards, cost reports, variance analysis &amp; data-driven workforce insights</p>
-      </div>
-    </div>
-  </div>
+ 
+<!-- EXPERTISE -->
+<section class="px-6 py-20 max-w-lg mx-auto reveal">
+<h2 class="text-2xl text-white mb-6">Expertise</h2>
+<ul class="text-gray-400 space-y-2">
+<li>✔ Payroll Operations</li>
+<li>✔ Compensation & Benefits</li>
+<li>✔ HR Analytics</li>
+</ul>
 </section>
-
-
-<!-- ═══════════════════════════════════════════ -->
-<!--          CAREER HIGHLIGHTS SECTION         -->
-<!-- ═══════════════════════════════════════════ -->
-<section class="relative px-6 py-16 max-w-lg mx-auto">
-  <div class="scroll-reveal">
-    <span class="section-label mb-8 block">Career Highlights</span>
-  </div>
-
-  <div class="flex flex-col gap-7 mt-2">
-    <!-- Highlight 1 -->
-    <div class="scroll-reveal timeline-item" style="transition-delay: 0.05s">
-      <div class="timeline-dot"></div>
-      <div>
-        <span class="font-mono text-[10px] tracking-[2px] text-[#C8A951] uppercase block mb-1.5">Current Role</span>
-        <p class="font-body text-[13.5px] text-[#C8D0DE] leading-[1.75] font-light">
-          Serving as <span class="text-white font-medium">Payroll, Compensation &amp; Benefits Senior Officer</span> at <span class="text-white font-medium">Bin-Shihon Group</span>, overseeing payroll operations for 1,200+ employees.
-        </p>
-      </div>
-    </div>
-
-    <!-- Highlight 2 -->
-    <div class="scroll-reveal timeline-item" style="transition-delay: 0.12s">
-      <div class="timeline-dot"></div>
-      <div>
-        <span class="font-mono text-[10px] tracking-[2px] text-[#C8A951] uppercase block mb-1.5">Previous Impact</span>
-        <p class="font-body text-[13.5px] text-[#C8D0DE] leading-[1.75] font-light">
-          Led payroll processing for over <span class="text-white font-medium">1,000 employees</span> at <span class="text-white font-medium">Alesayi Motors</span>, achieving full Mudad/WPS compliance throughout tenure.
-        </p>
-      </div>
-    </div>
-
-    <!-- Highlight 3 -->
-    <div class="scroll-reveal timeline-item" style="transition-delay: 0.19s">
-      <div class="timeline-dot"></div>
-      <div>
-        <span class="font-mono text-[10px] tracking-[2px] text-[#C8A951] uppercase block mb-1.5">Recognition</span>
-        <p class="font-body text-[13.5px] text-[#C8D0DE] leading-[1.75] font-light">
-          Awarded <span class="text-white font-medium">3rd Place</span> in the <span class="text-white font-medium">Future Researcher Competition</span> at King Abdulaziz University.
-        </p>
-      </div>
-    </div>
-  </div>
+ 
+<!-- CAREER -->
+<section class="px-6 py-20 max-w-lg mx-auto reveal">
+<h2 class="text-2xl text-white mb-6">Career</h2>
+<p class="text-gray-400">Senior Officer at Bin-Shihon Group</p>
 </section>
+ 
+<!-- CTA -->
+<section class="px-6 py-20 text-center reveal">
+<a href="cv.pdf" download class="btn-primary">
 
-
-<!-- ═══════════════════════════════════════════ -->
-<!--            CALL TO ACTION FOOTER           -->
-<!-- ═══════════════════════════════════════════ -->
-<section class="relative px-6 pt-10 pb-20 max-w-lg mx-auto">
-  <div class="scroll-reveal">
-    <!-- Decorative line -->
-    <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-[rgba(200,169,81,0.2)] to-transparent mb-12"></div>
-
-    <div class="flex flex-col gap-3.5">
-      <!-- Download CV -->
-      <a href="cv.pdf" download class="btn-primary btn-gold group">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download Full CV
-      </a>
-
-      <!-- LinkedIn -->
-      <a href="https://linkedin.com/in/bandaralsulami015" target="_blank" rel="noopener noreferrer" class="btn-primary btn-outline group">
-        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
-        Connect on LinkedIn
-      </a>
-
-      <!-- Email -->
-      <a href="/cdn-cgi/l/email-protection#0c6d607f79606d6165216e6d62686d7e4c63797860636367226f6361" class="btn-primary btn-outline group">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M22 7l-10 6L2 7"/></svg>
-        Email Me
-      </a>
-    </div>
-
-    <!-- Footer stamp -->
-    <div class="mt-14 flex flex-col items-center gap-2 opacity-30">
-      <div class="w-8 h-[1px] bg-[#C8A951]"></div>
-      <span class="font-mono text-[9px] tracking-[3px] text-[#6B7280] uppercase">Jeddah, Saudi Arabia</span>
-    </div>
-  </div>
+    Download CV
+</a>
 </section>
+ 
+<script>
 
+document.body.classList.remove("no-js");
+ 
+/* SAFE OBSERVER */
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Scroll-triggered reveal
+function initObserver() {
+
+  const elements = document.querySelectorAll('.reveal');
+ 
+  if (!('IntersectionObserver' in window)) {
+
+    elements.forEach(el => el.classList.add('visible'));
+
+    return;
+
+  }
+ 
   const observer = new IntersectionObserver((entries) => {
+
     entries.forEach(entry => {
+
       if (entry.isIntersecting) {
+
         entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
+
       }
+
     });
-  }, { thresh
+
+  }, {
+
+    threshold: 0.1
+
+  });
+ 
+  elements.forEach(el => observer.observe(el));
+
+}
+ 
+window.addEventListener('load', () => {
+
+  initObserver();
+ 
+  /* HARD FALLBACK (fixes GitHub Pages delay issues) */
+
+  setTimeout(() => {
+
+    document.querySelectorAll('.reveal').forEach(el => {
+
+      el.classList.add('visible');
+
+    });
+
+  }, 800);
+
+});
+</script>
+ 
+</body>
+</html>
+ 
